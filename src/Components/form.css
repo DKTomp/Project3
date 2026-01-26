@@ -6,3 +6,7 @@
 .completed {
     background-color: lime !important;
 }
+
+.complete-button {
+    width: 150px;
+}

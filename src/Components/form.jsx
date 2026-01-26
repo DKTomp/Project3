@@ -34,7 +34,7 @@ function Form1() {
         event.preventDefault()
         let date = todayDate()
         let newTask = {
-            id: 0,
+            id: tasks.length,
             task : formData.taskName,
             comDate : formData.taskDate,
             curDate : date,
@@ -49,11 +49,12 @@ function Form1() {
     }
 
     function handleComplete(id) {
-        console.log(id)
-        
+        //console.log(id)
+        console.log(tasks[id])
         settasks(
             tasks.map((task) =>
-            tasks[id].id === id ? {...task, isComplete: !tasks[id].isComplete} : task),
+            task.id=== id ? {...task, isComplete: !tasks[id].isComplete} : task
+            ),
         )
     }
 
@@ -99,7 +100,6 @@ function Form1() {
                 </thead>
                 <tbody>
                     {tasks.map ((task, index) =>
-                    
                     <tr>
                         <td>{index + 1}</td>
                         <td>{task.task}</td>
@@ -108,21 +108,21 @@ function Form1() {
                         <td>{task.curDate}</td>
                         <td>
                             <Button 
+                            className='complete-button'
                             variant="success" 
-                            onClick={() => handleComplete(task.id)}>
+                            onClick={() => handleComplete(index)}>
                                 {task.isComplete ? "Not Completed" : "Completed"}
                             </Button>&nbsp;
                             <Button variant="danger">
                                 Delete
                             </Button>
                         </td>
-                    </tr>
+                    </tr>  
                     )}
                 </tbody>
             </Table>
         </>
     )
 }
-
 
 export default Form1
