@@ -1,4 +1,4 @@
-import NavBar from '../Components/Header';
+import NavBar from './Header';
 import Form1 from '../Components/form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -3,6 +3,11 @@
     width: 500px;
 }
 
+.table {
+    margin-inline: 15px;
+    background-color: rgb(60, 60, 60) !important;
+}
+
 .completed {
     background-color: lime !important;
 }
