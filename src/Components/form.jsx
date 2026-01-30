@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import Form from 'react-bootstrap/Form';
+import About from '../Pages/About';
 import Button from 'react-bootstrap/Button';
 import {Table} from 'react-bootstrap';
 import './form.css'
@@ -45,7 +46,7 @@ function Form1() {
         setFormData({
             taskDate: '',
             taskName: '',
-        })   
+        })
     }
 
     function handleComplete(id) {
@@ -56,6 +57,11 @@ function Form1() {
             task.id=== id ? {...task, isComplete: !tasks[id].isComplete} : task
             ),
         )
+    }
+
+    function handleDelete(event, taskIndex) {
+        const newtasks = tasks.filter((task,index) => index!=taskIndex)
+        settasks(newtasks) 
     }
 
     return (
@@ -82,7 +88,7 @@ function Form1() {
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button className='mb-3' variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
@@ -113,7 +119,9 @@ function Form1() {
                             onClick={() => handleComplete(index)}>
                                 {task.isComplete ? "Not Completed" : "Completed"}
                             </Button>&nbsp;
-                            <Button variant="danger">
+                            <Button 
+                            variant="danger"
+                            onClick={(event)=>(handleDelete (event,index))}>
                                 Delete
                             </Button>
                         </td>

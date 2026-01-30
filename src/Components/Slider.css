@@ -1,0 +1,26 @@
+.three-position-button {
+    width: 200px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.three-position-button.alltasks {
+    background-color: gray;
+}
+
+.three-position-button.completed {
+    background-color: lime;
+}
+
+.three-position-button.uncompleted {
+    background-color: red;
+}
+
+.three-position-button:hover {
+    opacity: 80%;
+}
