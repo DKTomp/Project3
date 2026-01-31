@@ -69,6 +69,7 @@ function Form1() {
     }
     
     const [tableData, setTableData] = useState(tasks)
+
     const showAll = () => {
         setTableData(tasks)
     }
@@ -76,7 +77,6 @@ function Form1() {
     const showCompleted = () => {
         const completedTasks = tasks.filter((task) => task.isComplete === true)
         setTableData(completedTasks)
-        console.log(tasks)
     }
 
     const showUncompleted = () => {
@@ -148,43 +148,45 @@ function Form1() {
                 </div>
             </div>
 
-            <Table striped bordered className='table-style'>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Todo</th>
-                        <th>Completed</th>
-                        <th>Target Date</th>
-                        <th>Date Created</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableData.map ((task, index) =>
-                    <tr>
-                        <td>{index + 1}</td>
-                        <td>{task.task}</td>
-                        <td className={task.isComplete ? 'completed' : 'uncompleted'}>{task.isComplete ? "Completed" : "Not Completed"}</td>
-                        <td>{task.comDate}</td>
-                        <td>{task.curDate}</td>
-                        <td>
-                            <Button 
-                            className='complete-button'
-                            variant="success"
-                            value={task.id}
-                            onClick={(event, value) => (handleComplete (event))}>
-                                {task.isComplete ? "Not Completed" : "Completed"}
-                            </Button>&nbsp;
-                            <Button 
-                            variant="danger"
-                            onClick={(event)=>(handleDelete (event,index))}>
-                                Delete
-                            </Button>
-                        </td>
-                    </tr>  
-                    )}
-                </tbody>
-            </Table>
+            <div className='table-css'>
+                <Table striped bordered className='table-style'>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Todo</th>
+                            <th>Completed</th>
+                            <th>Target Date</th>
+                            <th>Date Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tableData.map ((task, index) =>
+                        <tr>
+                            <td>{index + 1}</td>
+                            <td>{task.task}</td>
+                            <td className={task.isComplete ? 'completed' : 'uncompleted'}>{task.isComplete ? "Completed" : "Not Completed"}</td>
+                            <td>{task.comDate}</td>
+                            <td>{task.curDate}</td>
+                            <td>
+                                <Button 
+                                className='complete-button'
+                                variant="success"
+                                value={task.id}
+                                onClick={(event, value) => (handleComplete (event))}>
+                                    {task.isComplete ? "Not Completed" : "Completed"}
+                                </Button>&nbsp;
+                                <Button 
+                                variant="danger"
+                                onClick={(event)=>(handleDelete (event,index))}>
+                                    Delete
+                                </Button>
+                            </td>
+                        </tr>  
+                        )}
+                    </tbody>
+                </Table>
+            </div>
         </>
     )
 }
